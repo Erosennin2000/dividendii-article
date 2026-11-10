@@ -1,0 +1,8 @@
+# Only the entry-point scripts may be opened from the browser.
+<FilesMatch "^(lib|seed|config\.local)\.php$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(txt|json|sql|log|bak)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

@@ -1,0 +1,9 @@
+# Uploaded images are served as plain files. Nothing here may ever run as code.
+Options -Indexes -ExecCGI
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi|sh)$">
+  Require all denied
+</FilesMatch>
+RemoveHandler .php .phtml
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>

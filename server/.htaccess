@@ -1,0 +1,16 @@
+Options -Indexes
+DirectoryIndex index.php
+RewriteEngine On
+
+# Article API (the website forwards /api/v1/... here)
+RewriteRule ^api/v1/(.*)$ api/index.php?route=$1 [L,QSA]
+
+# Search-engine files (the website forwards /sitemap.xml and /robots.txt here)
+RewriteRule ^sitemap\.xml$ api/sitemap.php [L]
+RewriteRule ^robots\.txt$ api/robots.php [L]
+
+# This address is only a back room. People and search engines use the main website.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
