@@ -32,7 +32,7 @@ export default function Review() {
       <div className="content">
         <div className="grid g2" style={{ alignItems: 'start' }}>
           <div className="card" style={{ borderColor: 'var(--ink)' }}>
-            <div className="row" style={{ alignItems: 'flex-start' }}><div><div className="muted xs" style={{ fontWeight: 600 }}>Key facts sheet</div><h2 style={{ fontSize: 20, marginTop: 4 }}>Share-backed loan from Trust Bank</h2><div className="muted small">Arranged by Vendii · {fmtDate(today())}</div></div><button className="btn btn-o btn-s" type="button" onClick={() => toast('Key facts sheet downloading')}>Download PDF</button></div>
+            <div className="row" style={{ alignItems: 'flex-start' }}><div><div className="muted xs" style={{ fontWeight: 600 }}>Key facts sheet</div><h2 style={{ fontSize: 20, marginTop: 4 }}>Share-backed loan from Trust Bank</h2><div className="muted small">Arranged by Dividendii · {fmtDate(today())}</div></div><button className="btn btn-o btn-s" type="button" onClick={() => toast('Key facts sheet downloading')}>Download PDF</button></div>
             <div style={{ marginTop: 16 }}>
               <K k="You borrow" v={naira(d.amount)} />
               <K k="For" v={`${d.tenor} months, ${fmtDate(start)} to ${fmtDate(end)}`} />

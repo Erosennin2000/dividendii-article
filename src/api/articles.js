@@ -21,6 +21,8 @@ export const publicApi = {
   list: (o = {}) => req('GET', '/articles' + qs(o)),
   categories: () => req('GET', '/categories'),
   get: (slug) => req('GET', '/articles/' + encodeURIComponent(slug)),
+  request: (b) => req('POST', '/requests', { body: b }),
+  hit: (path) => { try { fetch('/api/v1/hit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path }), keepalive: true }).catch(() => {}) } catch { /* counting is optional */ } },
 }
 export const adminApi = {
   me: () => req('GET', '/admin/me'),
@@ -33,6 +35,9 @@ export const adminApi = {
   publish: (id) => req('POST', `/admin/articles/${id}/publish`, { body: {} }),
   unpublish: (id) => req('POST', `/admin/articles/${id}/unpublish`, { body: {} }),
   upload: (file) => { const f = new FormData(); f.append('image', file); return req('POST', '/admin/upload', { form: f }) },
+  requests: () => req('GET', '/admin/requests'),
+  setHandled: (id, handled) => req('POST', `/admin/requests/${id}/handled`, { body: { handled } }),
+  stats: () => req('GET', '/admin/stats'),
   password: (current, next) => req('POST', '/admin/password', { body: { current, new: next } }),
 }
 

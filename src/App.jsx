@@ -48,7 +48,9 @@ import Integrations from './pages/admin/Integrations.jsx'
 import Customer from './pages/admin/Customer.jsx'
 import Audit from './pages/admin/Audit.jsx'
 import { can } from './data/catalog.js'
-import { LENDING_ENABLED } from './features.js'
+import { LENDING_ENABLED, DEMO_ENABLED } from './features.js'
+import Legal from './pages/site/Legal.jsx'
+import { publicApi } from './api/articles.js'
 
 // Lending screens are loaded only when the switch is on, so with it off they are not in the shipped bundle at all.
 const lazyIf = (load) => (LENDING_ENABLED ? React.lazy(load) : () => null)
@@ -79,8 +81,13 @@ function Perm({ area, children }) {
 }
 
 function ScrollTop() {
-  const { pathname } = useLocation()
-  React.useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const { pathname, hash } = useLocation()
+  React.useEffect(() => {
+    if (hash) { const t = setTimeout(() => { const el = document.getElementById(decodeURIComponent(hash.slice(1))); if (el) el.scrollIntoView(); else window.scrollTo(0, 0) }, 60); return () => clearTimeout(t) }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
+  // Cookie-free visit count: one small request per page view, no cookie and no personal data.
+  React.useEffect(() => { if (!pathname.startsWith('/admin')) publicApi.hit(pathname) }, [pathname])
   return null
 }
 
@@ -99,10 +106,14 @@ export function AppRoutes() {
             <Route path="/safety" element={<Safety />} />
             <Route path="/learn" element={<Learn />} />
             <Route path="/learn/:slug" element={<Article />} />
+            <Route path="/legal" element={<Legal />} />
           </Route>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/app" element={<RequireAuth><AppShell /></RequireAuth>}>
+          {!DEMO_ENABLED && <Route path="/signin" element={<Navigate to="/" replace />} />}
+          {!DEMO_ENABLED && <Route path="/signup" element={<Navigate to="/check" replace />} />}
+          {!DEMO_ENABLED && <Route path="/app/*" element={<Navigate to="/" replace />} />}
+          {DEMO_ENABLED && <Route path="/signin" element={<SignIn />} />}
+          {DEMO_ENABLED && <Route path="/signup" element={<SignUp />} />}
+          {DEMO_ENABLED && <Route path="/app" element={<RequireAuth><AppShell /></RequireAuth>}>
             <Route index element={<Dashboard />} />
             <Route path="markets" element={<Markets />} />
             <Route path="stock/:ticker" element={<Stock />} />
@@ -122,7 +133,7 @@ export function AppRoutes() {
             <Route path="settings" element={<Settings />} />
             <Route path="support" element={<Support />} />
             <Route path="notifications" element={<Notifications />} />
-          </Route>
+          </Route>}
           {!LENDING_ENABLED && <Route path="/lend/*" element={<Navigate to="/app" replace />} />}
           {LENDING_ENABLED && <Route path="/lend" element={<RequireAuth><LendShell /></RequireAuth>}>
             <Route index element={<LendDashboard />} />
@@ -133,7 +144,8 @@ export function AppRoutes() {
             <Route path="learn" element={<LendLearn />} />
           </Route>}
           <Route path="/admin/articles/*" element={<ArticlesAdmin />} />
-          <Route path="/admin" element={<RequireAuth admin><AdminShell /></RequireAuth>}>
+          {!DEMO_ENABLED && <Route path="/admin/*" element={<Navigate to="/admin/articles" replace />} />}
+          {DEMO_ENABLED && <Route path="/admin" element={<RequireAuth admin><AdminShell /></RequireAuth>}>
             <Route index element={<Overview />} />
             <Route path="orders" element={<Perm area="orders"><OrderDesk /></Perm>} />
             <Route path="users" element={<Perm area="users"><Users /></Perm>} />
@@ -150,7 +162,7 @@ export function AppRoutes() {
             <Route path="reports" element={<Perm area="reports"><Reports /></Perm>} />
             <Route path="integrations" element={<Perm area="integrations"><Integrations /></Perm>} />
             <Route path="audit" element={<Perm area="audit"><Audit /></Perm>} />
-          </Route>
+          </Route>}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </React.Suspense>

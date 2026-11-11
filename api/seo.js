@@ -61,7 +61,7 @@ export default async function handler(req, res) {
       const url = `${SITE_URL}/learn/${a.slug}`
       const shortTitle = a.seo_title || a.title
       const desc = a.seo_description || a.excerpt
-      const img = a.featured_image ? (a.featured_image.startsWith('/') ? SITE_URL + a.featured_image : a.featured_image) : ''
+      const img = a.featured_image ? (a.featured_image.startsWith('/') ? SITE_URL + a.featured_image : a.featured_image) : SITE_URL + '/og-card.png'
       const isOrg = new RegExp('team|editorial|' + SITE_NAME.replace(/[^a-z0-9]/gi, ''), 'i').test(a.author || '')
       const article = {
         '@context': 'https://schema.org', '@type': 'Article', headline: String(a.title).slice(0, 110), description: desc,
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
         + meta('twitter:description', desc, 'name') + (img ? meta('twitter:image', img, 'name') : '')
         + `<script type="application/ld+json">${ld(article)}</script>\n<script type="application/ld+json">${ld(crumbs)}</script>\n`
       const bodyHtml = `<article><p>${esc(a.category)}</p><h1>${esc(a.title)}</h1><p>By ${esc(a.author)} · ${esc(longDate(a.published_at))} · ${Number(a.reading_minutes) || 1} min read</p>`
-        + (img ? `<img src="${esc(a.featured_image)}" alt="${esc(a.featured_image_alt)}" />` : '') + a.body_html + '</article>'
+        + (a.featured_image ? `<img src="${esc(a.featured_image)}" alt="${esc(a.featured_image_alt)}" />` : '') + a.body_html + '</article>'
       return send(200, render(shell, { title: `${shortTitle} | ${SITE_NAME}`, desc, canonical: url, robots: 'index,follow', extraHead, bodyHtml }), true, FRESH)
     }
 

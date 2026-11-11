@@ -26,8 +26,8 @@ export default function Start() {
             <div className="card">
               <h2 style={{ fontSize: 17 }}>Where are your shares?</h2>
               <div style={{ display: 'flex', gap: 12, marginTop: 14, flexWrap: 'wrap' }}>
-                <button type="button" className={'opt' + (src === 'vendii' ? ' on' : '')} onClick={() => setSrc('vendii')}><div style={{ fontWeight: 600 }}>In my Vendii account</div><div className="muted small" style={{ marginTop: 4 }}>CHN {state.user.chn} · {state.holdings.length} holdings · we already know them</div></button>
-                <button type="button" className={'opt' + (src === 'other' ? ' on' : '')} onClick={() => setSrc('other')}><div style={{ fontWeight: 600, display: 'flex', gap: 8, alignItems: 'center' }}>With another broker <Pill kind="gold">Only on Vendii</Pill></div><div className="muted small" style={{ marginTop: 4 }}>Any CSCS account. Enter your CHN; CSCS sends you a code to confirm.</div></button>
+                <button type="button" className={'opt' + (src === 'vendii' ? ' on' : '')} onClick={() => setSrc('vendii')}><div style={{ fontWeight: 600 }}>In my Dividendii account</div><div className="muted small" style={{ marginTop: 4 }}>CHN {state.user.chn} · {state.holdings.length} holdings · we already know them</div></button>
+                <button type="button" className={'opt' + (src === 'other' ? ' on' : '')} onClick={() => setSrc('other')}><div style={{ fontWeight: 600, display: 'flex', gap: 8, alignItems: 'center' }}>With another broker <Pill kind="gold">Only on Dividendii</Pill></div><div className="muted small" style={{ marginTop: 4 }}>Any CSCS account. Enter your CHN; CSCS sends you a code to confirm.</div></button>
                 <button type="button" className="opt" disabled><div style={{ fontWeight: 600, display: 'flex', gap: 8, alignItems: 'center' }}>Old share certificates <Pill>Phase 3</Pill></div><div className="muted small" style={{ marginTop: 4 }}>We move them into CSCS first, then you can borrow against them.</div></button>
               </div>
               {src === 'other' && (

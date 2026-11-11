@@ -45,7 +45,7 @@ export default function FundDetail() {
             <button className="btn btn-p" type="button" disabled={!open} onClick={() => setModal('buy')}>{h ? 'Buy more' : 'Invest'}</button>
           </div>
         </div>
-        {!open && <Notice kind="warn">{f.status !== 'Open' ? `New purchases are ${f.status.toLowerCase()} for this fund. You can still sell what you hold.` : 'Fund purchases are paused on Vendii right now.'}</Notice>}
+        {!open && <Notice kind="warn">{f.status !== 'Open' ? `New purchases are ${f.status.toLowerCase()} for this fund. You can still sell what you hold.` : 'Fund purchases are paused on Dividendii right now.'}</Notice>}
 
         {h && (
           <div className="grid g3">

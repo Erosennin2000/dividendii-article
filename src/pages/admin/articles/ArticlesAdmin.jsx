@@ -24,12 +24,17 @@ export default function ArticlesAdmin() {
       <header className="adm-bar"><div className="adm-wrap">
         <Link to="/admin/articles" className="brand" style={{ display: 'flex', alignItems: 'center', gap: 10, fontWeight: 700, color: 'var(--ink)' }}><Logo size={28} />Articles</Link>
         <span className="muted small" style={{ marginLeft: 'auto' }}>{auth.email}</span>
+        <Link className="btn btn-o btn-s" to="/admin/articles">Articles</Link>
+        <Link className="btn btn-o btn-s" to="/admin/articles/requests">Requests</Link>
+        <Link className="btn btn-o btn-s" to="/admin/articles/visits">Visits</Link>
         <Link className="btn btn-o btn-s" to="/learn" target="_blank">View Learn page</Link>
         <button className="btn btn-o btn-s" type="button" onClick={async () => { try { await adminApi.logout() } catch { /* ignore */ } setCsrf(''); setAuth(null) }}>Sign out</button>
       </div></header>
       <div className="adm-wrap adm-main">
         <Routes>
           <Route index element={<List onExpired={onExpired} />} />
+          <Route path="requests" element={<Requests onExpired={onExpired} />} />
+          <Route path="visits" element={<Visits onExpired={onExpired} />} />
           <Route path=":id" element={<Editor onExpired={onExpired} />} />
         </Routes>
       </div>
@@ -52,6 +57,41 @@ function Login({ onDone, expired }) {
       <label className="lbl" htmlFor="pw" style={{ marginTop: 12 }}>Password</label><input id="pw" className="inp" type="password" autoComplete="current-password" value={pw} onChange={e => setPw(e.target.value)} required />
       <button className="btn btn-p btn-l btn-block" type="submit" disabled={busy} style={{ marginTop: 18 }}>{busy ? 'Signing in…' : 'Sign in'}</button>
     </form></div>
+  )
+}
+
+function Requests({ onExpired }) {
+  const [rows, setRows] = useState(null), [err, setErr] = useState(''), [show, setShow] = useState('open')
+  useEffect(() => { adminApi.requests().then(r => setRows(r.data)).catch(e => { if (e.status === 401) onExpired(); else setErr(e.message) }) }, [])
+  const toggle = async (r) => { try { await adminApi.setHandled(r.id, !r.handled); setRows(rs => rs.map(x => x.id === r.id ? { ...x, handled: !x.handled } : x)) } catch (e) { if (e.status === 401) onExpired(); else setErr(e.message) } }
+  if (err) return <div className="alert bad">{err}</div>
+  if (!rows) return <p className="muted">Loading…</p>
+  const shown = rows.filter(r => show === 'all' || (show === 'open' ? !r.handled : r.handled))
+  const wa = (p) => 'https://wa.me/' + p.replace(/[^0-9]/g, '').replace(/^0/, '234')
+  return (
+    <>
+      <div className="row" style={{ flexWrap: 'wrap', marginBottom: 18 }}><div><h1 style={{ fontSize: 28 }}>Requests</h1><p className="muted" style={{ marginTop: 4 }}>Dividend check requests and investing waitlist sign-ups. Reply within 24 hours.</p></div></div>
+      <div className="seg" style={{ maxWidth: 420, marginBottom: 14 }} role="tablist">{[['open', 'To do'], ['done', 'Done'], ['all', 'All']].map(([v, l]) => <button key={v} type="button" role="tab" aria-selected={show === v} className={show === v ? 'on' : ''} onClick={() => setShow(v)}>{l}</button>)}</div>
+      <div className="card tight"><div className="scroll"><table className="tbl"><thead><tr><th>Received</th><th>Type</th><th>Name</th><th>Details</th><th>Contact</th><th></th></tr></thead><tbody>
+        {shown.map(r => <tr key={r.id}><td>{fmtLong(r.created_at)}</td><td>{r.kind === 'check' ? 'Dividend check' : 'Investing waitlist'}</td><td><strong>{r.full_name}</strong></td><td className="muted small">{[r.former_name && 'Former name: ' + r.former_name, r.company && 'Company: ' + r.company, r.state && 'State: ' + r.state].filter(Boolean).join(' · ') || '—'}</td><td className="small"><a href={wa(r.phone)} target="_blank" rel="noopener noreferrer">{r.phone}</a><br /><a href={'mailto:' + r.email}>{r.email}</a></td><td><button className="btn btn-o btn-s" type="button" onClick={() => toggle(r)}>{r.handled ? 'Reopen' : 'Mark done'}</button></td></tr>)}
+        {!shown.length && <tr><td colSpan="6" className="muted" style={{ textAlign: 'center', padding: 28 }}>Nothing here.</td></tr>}
+      </tbody></table></div></div>
+    </>
+  )
+}
+
+function Visits({ onExpired }) {
+  const [d, setD] = useState(null), [err, setErr] = useState('')
+  useEffect(() => { adminApi.stats().then(r => setD(r.data)).catch(e => { if (e.status === 401) onExpired(); else setErr(e.message) }) }, [])
+  if (err) return <div className="alert bad">{err}</div>
+  if (!d) return <p className="muted">Loading…</p>
+  const total = d.days.reduce((a, x) => a + x.n, 0), max = Math.max(1, ...d.days.map(x => x.n))
+  return (
+    <>
+      <div style={{ marginBottom: 18 }}><h1 style={{ fontSize: 28 }}>Visits</h1><p className="muted" style={{ marginTop: 4 }}>Page views in the last 30 days: <strong>{total}</strong>. Counted without cookies and without storing who you are.</p></div>
+      <div className="card"><h2 style={{ fontSize: 17 }}>Per day</h2><div role="img" aria-label="Page views per day" style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 120, marginTop: 12 }}>{d.days.map(x => <div key={x.day} title={x.day + ': ' + x.n} style={{ flex: 1, background: 'var(--gold)', height: Math.max(3, x.n / max * 120), borderRadius: 2 }} />)}</div></div>
+      <div className="card tight" style={{ marginTop: 14 }}><div className="scroll"><table className="tbl"><thead><tr><th>Page</th><th>Views</th></tr></thead><tbody>{d.top.map(x => <tr key={x.path}><td>{x.path}</td><td>{x.n}</td></tr>)}{!d.top.length && <tr><td colSpan="2" className="muted" style={{ textAlign: 'center', padding: 28 }}>No visits counted yet.</td></tr>}</tbody></table></div></div>
+    </>
   )
 }
 

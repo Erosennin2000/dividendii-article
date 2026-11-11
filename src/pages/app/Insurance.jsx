@@ -42,7 +42,7 @@ export default function Insurance() {
             </div>
           ))}
         </div>
-        <div className="muted xs">Insurance is provided by licensed partners and regulated by NAICOM. It is not a Vendii product and is not covered by your brokerage account.</div>
+        <div className="muted xs">Insurance is provided by licensed partners and regulated by NAICOM. It is not a Dividendii product and is not covered by your brokerage account.</div>
       </div>
       {sel && (
         <Modal title={sel.name + ' quote'} onClose={() => setSel(null)}>

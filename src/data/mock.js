@@ -1,4 +1,4 @@
-// Sample data for the Vendii demo. Figures are illustrative.
+// Sample data for the Dividendii demo. Figures are illustrative.
 export const REGISTRARS = [
   'Meristem Registrars', 'Africa Prudential', 'Coronation Registrars', 'First Registrars', 'Cardinalstone Registrars',
   'Apel Asset Registrars', 'United Securities', 'Greenwich Registrars', 'Pace Registrars', 'EDC Registrars',
@@ -154,7 +154,7 @@ export const COMPLAINTS = [
 
 export const SETTINGS = {
   commission: 0.0135, secFee: 0.003, ngxFee: 0.003, cscsFee: 0.0006, stampDuty: 0.00075, vat: 0.075,
-  recoveryFee: 0.10, loanRate: 0.24, arrangementFee: 0.01, lienFee: 2500,
+  recoveryFee: 0.05, loanRate: 0.24, arrangementFee: 0.01, lienFee: 2500,
   warnLtv: 0.625, callLtv: 0.714, liqLtv: 0.80, maxConcentration: 0.40, maxStockShareOfBook: 0.25, programmeLimit: 1.5e9,
   marketShock: 0, cureDays: 3, withdrawalApprovalLimit: 1000000, haltedTickers: [], fx: 1520,
   flags: { trading: true, lending: true, recovery: true, mmfSweep: false, recurring: false, ipo: true, funds: true, insurance: true, realtimePrices: false },
@@ -175,8 +175,8 @@ export const AUDIT = [
 ]
 
 export const LEARN = [
-  { slug: 'chn', title: 'What is a CHN, and do I have one?', mins: 3, body: 'A Clearing House Number is your account at the Central Securities Clearing System. Every Nigerian shareholder who bought shares through a broker since the late 1990s has one. Shares sit there in your own name, not your broker\'s. If you only hold paper certificates, you may not have a CHN yet; Vendii opens one for you through Trust Bank Securities and can dematerialise old certificates into it.' },
-  { slug: 'estate', title: 'Claiming a late relative\'s shares', mins: 6, body: 'You need the death certificate and either letters of administration (no will) or probate (with a will). The registrar then transmits the shares to the estate or heirs, and releases unclaimed dividends. Vendii prepares the registrar forms and tracks each registrar separately, because each has its own checklist.' },
+  { slug: 'chn', title: 'What is a CHN, and do I have one?', mins: 3, body: 'A Clearing House Number is your account at the Central Securities Clearing System. Every Nigerian shareholder who bought shares through a broker since the late 1990s has one. Shares sit there in your own name, not your broker\'s. If you only hold paper certificates, you may not have a CHN yet; Dividendii opens one for you through Trust Bank Securities and can dematerialise old certificates into it.' },
+  { slug: 'estate', title: 'Claiming a late relative\'s shares', mins: 6, body: 'You need the death certificate and either letters of administration (no will) or probate (with a will). The registrar then transmits the shares to the estate or heirs, and releases unclaimed dividends. Dividendii prepares the registrar forms and tracks each registrar separately, because each has its own checklist.' },
   { slug: 'savings-bond', title: 'The FGN Savings Bond, explained', mins: 4, body: 'The Debt Management Office issues a savings bond every month. Minimum ₦5,000, maximum ₦50m, in units of ₦1,000. It pays interest every quarter and returns your money after two or three years. Interest is tax free. It is backed by the Federal Government and can be sold on the exchange before maturity, though buyers can take time to find.' },
   { slug: 'margin-call', title: 'How a margin call works, with a naira example', mins: 5, body: 'Say you borrow ₦900,000 against shares worth ₦2.57m. The loan is 35% of the shares\' value. If the shares fall to ₦1.26m, the loan is 71.4% of their value and we ask you to add cash or shares within three working days. If they fall to ₦1.13m and nothing is added, enough shares are sold to bring the loan back to 62.5%, and everything else stays yours.' },
 ]

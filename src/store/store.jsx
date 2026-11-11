@@ -143,7 +143,7 @@ function reducer(state, a) {
         audit: audit(state, 'Order desk', 'Order moved to ' + o.status, a.id),
       }
     }
-    case 'DEPOSIT': return { ...state, transactions: tx(state, { type: 'Deposit', dir: 'in', amount: a.amount, ref: 'Bank transfer' }), cash: { ...state.cash, settled: state.cash.settled + a.amount }, notifications: notify(state, 'Money received', `₦${a.amount.toLocaleString()} landed in your Vendii account.`), audit: audit(state, 'System', 'Deposit', `₦${a.amount.toLocaleString()} by transfer`) }
+    case 'DEPOSIT': return { ...state, transactions: tx(state, { type: 'Deposit', dir: 'in', amount: a.amount, ref: 'Bank transfer' }), cash: { ...state.cash, settled: state.cash.settled + a.amount }, notifications: notify(state, 'Money received', `₦${a.amount.toLocaleString()} landed in your Dividendii account.`), audit: audit(state, 'System', 'Deposit', `₦${a.amount.toLocaleString()} by transfer`) }
     case 'WITHDRAW': { const needs = a.amount > (state.settings.withdrawalApprovalLimit || Infinity); return { ...state, transactions: tx(state, { type: 'Withdrawal', dir: 'out', amount: a.amount, status: needs ? 'Pending approval' : 'Completed', needsApproval: needs, ref: `${state.user.bank.name} ••${state.user.bank.last4}` }), cash: { ...state.cash, settled: state.cash.settled - a.amount }, notifications: notify(state, 'Withdrawal sent', `₦${a.amount.toLocaleString()} is on its way to ${state.user.bank.name} ••${state.user.bank.last4}.`), audit: audit(state, 'Customer', 'Withdrawal', `₦${a.amount.toLocaleString()} to ${state.user.bank.name}`) } }
     case 'TOGGLE_SWEEP': return { ...state, cash: { ...state.cash, sweep: !state.cash.sweep } }
     case 'ADD_RECURRING': return { ...state, recurring: [...state.recurring, a.plan] }
@@ -302,7 +302,7 @@ function reducer(state, a) {
     }
 
     // ---------- added: content, halts, people ----------
-    case 'NEWS_PUBLISH': return { ...state, news: [{ id: uid('nw'), date: today().slice(0, 10), by: 'Vendii', ...a.item }, ...state.news], audit: audit(state, 'Content', 'News published', a.item.title) }
+    case 'NEWS_PUBLISH': return { ...state, news: [{ id: uid('nw'), date: today().slice(0, 10), by: 'Dividendii', ...a.item }, ...state.news], audit: audit(state, 'Content', 'News published', a.item.title) }
     case 'NEWS_REMOVE': return { ...state, news: state.news.filter(n => n.id !== a.id), audit: audit(state, 'Content', 'News removed', a.id) }
     case 'HALT_TOGGLE': {
       const cur = state.settings.haltedTickers || []

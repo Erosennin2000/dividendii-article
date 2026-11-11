@@ -31,7 +31,7 @@ export default function AppShell() {
         { to: '/app/support', label: 'Help and complaints' },
       ] }]}
       box={{ title: 'Your shares, your name', body: <>Held at CSCS under CHN {state.user.chn}. Sponsoring broker: Trust Bank Securities.<div style={{ marginTop: 8 }}><span className="dot" style={{ marginRight: 6 }} />All systems normal</div></> }}
-      footLinks={[{ to: '/', label: 'Vendii website' }, { to: '/admin', label: 'Staff console' }]}
+      footLinks={[{ to: '/', label: 'Dividendii website' }, { to: '/admin', label: 'Staff console' }]}
     />
   )
 }

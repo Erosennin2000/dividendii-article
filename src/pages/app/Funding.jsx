@@ -18,7 +18,7 @@ export default function Funding() {
   const flags = state.settings.flags
   return (
     <>
-      <TopBar title="Funding and withdrawals"><span className="muted small">Cash is held with Trust Bank Securities and never mixed with Vendii's own money</span></TopBar>
+      <TopBar title="Funding and withdrawals"><span className="muted small">Cash is held with Trust Bank Securities and never mixed with Dividendii's own money</span></TopBar>
       <div className="content">
         <div className="grid g3" style={{ alignItems: 'start' }}>
           <div className="stack">
@@ -26,9 +26,9 @@ export default function Funding() {
               <h2 style={{ fontSize: 17 }}>Add money</h2>
               <p className="muted small" style={{ marginTop: 4 }}>Transfer from any Nigerian bank app. Money shows within minutes.</p>
               <div style={{ marginTop: 14, padding: 16, background: 'var(--ink)', borderRadius: 10, color: '#fff' }}>
-                <div className="xs" style={{ color: '#C9D6E4' }}>Your Vendii account number</div>
+                <div className="xs" style={{ color: '#C9D6E4' }}>Your Dividendii account number</div>
                 <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: '.04em' }} className="num">{state.user.virtualAccount.number}</div>
-                <div className="small" style={{ color: '#C9D6E4', marginTop: 4 }}>{state.user.virtualAccount.bank} · Account name: {state.user.name} / Vendii</div>
+                <div className="small" style={{ color: '#C9D6E4', marginTop: 4 }}>{state.user.virtualAccount.bank} · Account name: {state.user.name} / Dividendii</div>
                 <div style={{ display: 'flex', gap: 8, marginTop: 12 }}><button className="btn btn-g btn-s" type="button" onClick={() => { navigator.clipboard?.writeText(state.user.virtualAccount.number.replace(/\s/g, '')); toast('Account number copied') }}>Copy number</button><button className="btn btn-s" type="button" style={{ background: 'var(--blue-dk)', color: '#fff' }} onClick={() => setDep(true)}>Simulate a transfer</button></div>
               </div>
               <div className="rowline" style={{ marginTop: 12 }}><span>Pay with debit card</span><Pill>Phase 2</Pill></div>
@@ -83,7 +83,7 @@ export default function Funding() {
             <div className="card tight">
               <div className="card-head"><h2>Cash activity</h2></div>
               <div className="scroll"><table className="tbl"><thead><tr><th>Date</th><th>Activity</th><th className="num">Amount</th></tr></thead><tbody>
-                {[['6 Oct', 'Sale proceeds, NAHCO (settling)', '+₦48,500', ''], ['3 Oct', 'Bought GTCO', '-₦73,215', ''], ['1 Oct', 'Transfer in from GTBank', '+₦200,000', ''], ['29 Sep', 'Recovered dividend, Nestle (paid to GTBank)', '₦41,200 to bank', 'muted'], ['30 Sep', 'Vendii success fee (10%), NIBSS debit', '₦4,120 from bank', 'muted']].map(([d, a, v, c]) => <tr key={a}><td>{d}</td><td>{a}</td><td className={'num ' + c}>{v}</td></tr>)}
+                {[['6 Oct', 'Sale proceeds, NAHCO (settling)', '+₦48,500', ''], ['3 Oct', 'Bought GTCO', '-₦73,215', ''], ['1 Oct', 'Transfer in from GTBank', '+₦200,000', ''], ['29 Sep', 'Recovered dividend, Nestle (paid to GTBank)', '₦41,200 to bank', 'muted'], ['30 Sep', 'Dividendii success fee (10%), NIBSS debit', '₦4,120 from bank', 'muted']].map(([d, a, v, c]) => <tr key={a}><td>{d}</td><td>{a}</td><td className={'num ' + c}>{v}</td></tr>)}
               </tbody></table></div>
             </div>
           </div>

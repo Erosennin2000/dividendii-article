@@ -39,7 +39,7 @@ export default function SignIn() {
   return (
     <div className="auth">
       <div className="side">
-        <Link to="/" className="brand" style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 10, fontWeight: 700, fontSize: 22 }}><Logo />Vendii</Link>
+        <Link to="/" className="brand" style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 10, fontWeight: 700, fontSize: 22 }}><Logo />Dividendii</Link>
         <div><h1 style={{ fontSize: 40, lineHeight: 1.05, maxWidth: '12em' }}>{staff ? 'Staff console' : 'Everything you own on the Nigerian market, in one place.'}</h1><p style={{ color: '#C9D6E4', marginTop: 16, maxWidth: '30em', fontSize: 17 }}>{staff ? (LENDING_ENABLED ? 'Order desk, KYC, recovery claims, the loan book, compliance and settings.' : 'Order desk, KYC, recovery claims, compliance and settings.') + ' Every action is logged with your name.' : 'Your shares sit at CSCS in your own name. Your cash sits with Trust Bank Securities. We never ask for your PIN.'}</p></div>
         <p className="small" style={{ color: '#C9D6E4' }}>Licensed by SEC Nigeria as a digital sub-broker [registration number]</p>
       </div>

@@ -18,14 +18,14 @@ export default function Support() {
   const [sp] = useSearchParams()
   const [tab, setTab] = useState(sp.get('tab') || 'help')
   const [form, setForm] = useState({ subject: '', detail: '' })
-  const [msgs, setMsgs] = useState([{ who: 'Vendii', text: 'Hi Damilola, how can we help today?' }])
+  const [msgs, setMsgs] = useState([{ who: 'Dividendii', text: 'Hi Damilola, how can we help today?' }])
   const [draft, setDraft] = useState('')
   const mine = state.complaints.filter(c => c.user === state.user.name)
   function send() {
     if (!draft.trim()) return
     const m = [...msgs, { who: 'You', text: draft }]
     setMsgs(m); setDraft('')
-    setTimeout(() => setMsgs(x => [...x, { who: 'Vendii', text: 'Thanks. A person will pick this up within 15 minutes on working days. If it is about a trade, the order ID helps.' }]), 600)
+    setTimeout(() => setMsgs(x => [...x, { who: 'Dividendii', text: 'Thanks. A person will pick this up within 15 minutes on working days. If it is about a trade, the order ID helps.' }]), 600)
   }
   return (
     <>
@@ -34,7 +34,7 @@ export default function Support() {
         <div className="card tight">
           <Tabs tabs={[{ value: 'help', label: 'Help centre' }, { value: 'chat', label: 'Chat with us' }, { value: 'complaints', label: `Complaints (${mine.length})` }, { value: 'status', label: 'Service status' }]} value={tab} onChange={setTab} />
           <div style={{ padding: 20 }}>
-            {tab === 'help' && <div className="faq" style={{ marginTop: 0 }}>{FAQ.map(([q, a]) => <details key={q}><summary style={{ fontSize: 16 }}>{q}</summary><p style={{ fontSize: 15 }}>{a}</p></details>)}<p className="muted small" style={{ marginTop: 16 }}>Official channels only: in-app chat, WhatsApp [number], phone [number], [support email]. Anyone else claiming to be Vendii is not.</p></div>}
+            {tab === 'help' && <div className="faq" style={{ marginTop: 0 }}>{FAQ.map(([q, a]) => <details key={q}><summary style={{ fontSize: 16 }}>{q}</summary><p style={{ fontSize: 15 }}>{a}</p></details>)}<p className="muted small" style={{ marginTop: 16 }}>Official channels only: in-app chat, WhatsApp [number], phone [number], [support email]. Anyone else claiming to be Dividendii is not.</p></div>}
             {tab === 'chat' && (
               <div style={{ maxWidth: 640 }}>
                 <div className="stack" style={{ gap: 8, minHeight: 200 }}>{msgs.map((m, i) => <div key={i} className="rowline" style={{ justifyContent: m.who === 'You' ? 'flex-end' : 'flex-start', background: m.who === 'You' ? '#D6E4F0' : 'var(--paper)' }}><span><div className="muted xs">{m.who}</div>{m.text}</span></div>)}</div>

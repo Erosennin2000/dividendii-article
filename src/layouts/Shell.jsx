@@ -7,7 +7,7 @@ export function Shell({ kind, sections, box, footLinks, title }) {
   const { state, dispatch } = useStore()
   const [open, setOpen] = useState(false)
   const nav = useNavigate()
-  const brandLabel = kind === 'lend' ? <>Vendii <em>Borrow</em></> : kind === 'admin' ? <>Vendii <em>Admin</em></> : 'Vendii'
+  const brandLabel = kind === 'lend' ? <>Dividendii <em>Borrow</em></> : kind === 'admin' ? <>Dividendii <em>Admin</em></> : 'Dividendii'
   return (
     <div className="shell">
       {open && <div className="backdrop" onClick={() => setOpen(false)} />}

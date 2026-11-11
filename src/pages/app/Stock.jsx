@@ -59,7 +59,7 @@ export default function Stock() {
           </div>
         </div>
         {halted && <Notice kind="bad">Trading in {ticker} is halted. Orders cannot be placed until it resumes.</Notice>}
-        {paused && !halted && <Notice kind="warn">Trading is paused on Vendii right now. See the status page for details.</Notice>}
+        {paused && !halted && <Notice kind="warn">Trading is paused on Dividendii right now. See the status page for details.</Notice>}
 
         {held && (
           <div className="grid g3">

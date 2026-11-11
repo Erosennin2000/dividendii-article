@@ -94,7 +94,7 @@ export default function Trade() {
           </div>
           <Seg options={[{ value: 'Buy', label: 'Buy' }, { value: 'Sell', label: 'Sell' }]} value={side} onChange={v => { setSide(v); setQty('') }} ariaLabel="Buy or sell" />
           {halted && <Notice kind="bad">Trading in {ticker} is halted right now. You can place an order again when it resumes.</Notice>}
-          {paused && <Notice kind="warn">Trading is paused on Vendii right now. See the status page for details.</Notice>}
+          {paused && <Notice kind="warn">Trading is paused on Dividendii right now. See the status page for details.</Notice>}
           {s.liquidity === 'Thin' && <Notice kind="warn">{ticker} trades on few days (about {s.deals} deals today). Buying is easy; selling may take days or weeks, so we start you on a limit order.</Notice>}
           {sellBlocked && <Notice kind="warn">You do not own any {ticker}. <button className="linkbtn" type="button" onClick={() => setSide('Buy')}>Buy instead</button></Notice>}
 

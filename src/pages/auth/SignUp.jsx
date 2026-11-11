@@ -23,13 +23,13 @@ export default function SignUp() {
     if (!agree) { toast('Please read and accept the risk disclosure', 'bad'); return }
     if (ben.name) dispatch({ type: 'UPDATE_USER', patch: { beneficiary: { ...ben, confirmed: today() } } })
     dispatch({ type: 'SIGN_IN' })
-    toast('Welcome to Vendii', 'good')
+    toast('Welcome to Dividendii', 'good')
     nav(intent === 'recover' ? '/app/dividends?tab=recovery' : '/app')
   }
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 16, padding: '18px 40px', background: '#fff', borderBottom: '1px solid var(--line)' }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, fontWeight: 700, fontSize: 20, color: 'var(--text)' }}><Logo dark />Vendii</Link>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, fontWeight: 700, fontSize: 20, color: 'var(--text)' }}><Logo dark />Dividendii</Link>
         <span className="muted small" style={{ flex: '1 1 auto' }}>Open your investment account · about 6 minutes{intent === 'recover' ? ' · then we start your recovery' : ''}</span>
         <Pill kind="good">Progress saved. Continue on any device.</Pill>
         <Link to="/" className="small">Save and exit</Link>

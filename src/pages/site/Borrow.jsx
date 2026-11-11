@@ -16,7 +16,7 @@ export default function Borrow() {
   const interest = rows.reduce((a, r) => a + r.interest, 0)
   return (
     <>
-      <div className="wrap page-hero"><Pill>Opens March 2027</Pill><h1 style={{ marginTop: 12 }}>Borrow against your shares. Keep the shares, keep the dividends.</h1><p>A loan from Trust Bank, arranged by Vendii, secured on NGX shares you hold with us or any other broker. No salary slip, no guarantor, no early repayment charge.</p><div style={{ display: 'flex', gap: 10, marginTop: 24, flexWrap: 'wrap' }}><Link className="btn btn-p btn-l" to="/signup">Join the waitlist</Link><Link className="btn btn-l" to="/lend" style={{ border: '1.5px solid var(--line)', color: 'var(--text)' }}>Try the demo</Link></div></div>
+      <div className="wrap page-hero"><Pill>Opens March 2027</Pill><h1 style={{ marginTop: 12 }}>Borrow against your shares. Keep the shares, keep the dividends.</h1><p>A loan from Trust Bank, arranged by Dividendii, secured on NGX shares you hold with us or any other broker. No salary slip, no guarantor, no early repayment charge.</p><div style={{ display: 'flex', gap: 10, marginTop: 24, flexWrap: 'wrap' }}><Link className="btn btn-p btn-l" to="/signup">Join the waitlist</Link><Link className="btn btn-l" to="/lend" style={{ border: '1.5px solid var(--line)', color: 'var(--text)' }}>Try the demo</Link></div></div>
       <section className="block alt"><div className="wrap">
         <div className="pricing" style={{ marginTop: 0 }}>
           <div>
@@ -45,7 +45,7 @@ export default function Borrow() {
         <div className="tablebox" style={{ marginTop: 36 }}><table className="ptable"><thead><tr><th>Security</th><th>Liquidity</th><th>Advance rate</th></tr></thead><tbody>{STOCKS.map(st => <tr key={st.ticker}><td>{st.ticker}<div className="muted small">{st.name}</div></td><td><LiquidityPill level={st.liquidity} /></td><td>{Math.round((s.advance[st.ticker] ?? st.advance) * 100)}%</td></tr>)}</tbody></table></div>
       </div></section>
       <section className="block alt"><div className="wrap"><div className="sechead"><h2>{LEARN[3].title}</h2><p>{LEARN[3].body}</p></div></div></section>
-      <section className="block" id="partners"><div className="wrap"><div className="sechead"><h2>For banks and brokers</h2><p>Vendii originates and services; a partner bank lends and holds the lien. Brokers can offer Vendii loans to their own clients through an embedded API (Phase 3). <a href="mailto:[partnerships email]">Talk to us</a>.</p></div></div></section>
+      <section className="block" id="partners"><div className="wrap"><div className="sechead"><h2>For banks and brokers</h2><p>Dividendii originates and services; a partner bank lends and holds the lien. Brokers can offer Dividendii loans to their own clients through an embedded API (Phase 3). <a href="mailto:[partnerships email]">Talk to us</a>.</p></div></div></section>
       <Waitlist />
     </>
   )

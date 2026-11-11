@@ -17,8 +17,8 @@ export default function LendShell() {
         { to: '/lend/documents', label: 'Documents and statements' },
         { to: '/lend/learn', label: 'How it works' },
       ] }]}
-      box={{ title: 'Who lends', body: 'Loans are provided by Trust Bank. Vendii arranges them. Your shares stay in your name at CSCS with a lien in the bank\'s favour until you repay.' }}
-      footLinks={[{ to: '/app', label: 'Back to Vendii Trading' }, { to: '/app/support', label: 'Talk to us' }]}
+      box={{ title: 'Who lends', body: 'Loans are provided by Trust Bank. Dividendii arranges them. Your shares stay in your name at CSCS with a lien in the bank\'s favour until you repay.' }}
+      footLinks={[{ to: '/app', label: 'Back to Dividendii Trading' }, { to: '/app/support', label: 'Talk to us' }]}
     />
   )
 }
