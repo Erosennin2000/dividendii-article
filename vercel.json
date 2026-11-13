@@ -26,11 +26,11 @@
     },
     {
       "source": "/check",
-      "destination": "https://dividendii-check.vercel.app/check"
+      "destination": "https://dividendiicheck21registrars.vercel.app/check"
     },
     {
       "source": "/check/:path*",
-      "destination": "https://dividendii-check.vercel.app/check/:path*"
+      "destination": "https://dividendiicheck21registrars.vercel.app/check/:path*"
     },
     {
       "source": "/((?!api/|assets/|uploads/).*)",
