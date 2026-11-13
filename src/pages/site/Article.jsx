@@ -31,7 +31,7 @@ export function ArticleView({ a, related = [], preview = false }) {
         <aside className="article-aside">
           {toc.length >= 3 && <nav className="toc card" aria-label="Table of contents"><h2>In this article</h2><ol>{toc.map(t => <li key={t.id} className={t.level === 3 ? 'sub' : ''}><a href={'#' + t.id} onClick={e => { e.preventDefault(); document.getElementById(t.id)?.scrollIntoView({ behavior: 'smooth' }) }}>{t.text}</a></li>)}</ol></nav>}
           <div className="card more-learn"><h2>More ways to learn</h2>
-            <Link to="/check"><strong>Check for unclaimed dividends</strong><span>Free search across the registrars</span></Link>
+            <a href="/check"><strong>Check for unclaimed dividends</strong><span>Free to send, across the registrars</span></a>
             <Link to="/learn#calendar"><strong>Dividend calendar</strong><span>Qualification and payment dates</span></Link>
             <Link to="/learn#bond"><strong>FGN Savings Bond calculator</strong><span>See what a bond pays you</span></Link>
             <Link to="/pricing"><strong>What it costs</strong><span>Every fee in plain naira</span></Link>
@@ -39,7 +39,7 @@ export function ArticleView({ a, related = [], preview = false }) {
         </aside>
       </div>
       {related.length > 0 && <section className="block alt"><div className="wrap"><div className="sechead"><h2>Keep reading</h2></div><div className="art-grid">{related.map(r => <ArticleCard key={r.id} a={r} />)}</div></div></section>}
-      {!preview && <section className="block"><div className="wrap"><div className="card article-cta"><div><h2>Own Nigerian shares? Check what you may be owed.</h2><p className="muted">Many shareholders have dividends waiting at a registrar. The check is free and takes a minute.</p></div><Link className="btn btn-p btn-l" to="/check">Check my dividends</Link></div><p className="muted small" style={{ marginTop: 20, maxWidth: '48em' }}>This article is for education only and is not investment advice. The value of investments can go down as well as up.</p></div></section>}
+      {!preview && <section className="block"><div className="wrap"><div className="card article-cta"><div><h2>Own Nigerian shares? Check what you may be owed.</h2><p className="muted">Many shareholders have dividends waiting at a registrar. The check is free and takes a minute.</p></div><a className="btn btn-p btn-l" href="/check">Check my dividends</a></div><p className="muted small" style={{ marginTop: 20, maxWidth: '48em' }}>This article is for education only and is not investment advice. The value of investments can go down as well as up.</p></div></section>}
     </>
   )
 }

@@ -20,7 +20,7 @@ export default function SiteLayout() {
         <div className="wrap">
           <Link className="brand" to="/" aria-label="Dividendii home" onClick={close}><Logo size={32} />Dividendii</Link>
           <nav className={'main' + (open ? ' open' : '')} aria-label="Main">
-            <NavLink to="/check" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Check my dividends</NavLink>
+            <a href="/check">Check my dividends</a>
             <Link to={{ pathname: '/', hash: '#how' }} onClick={close}>How it works</Link>
             <NavLink to="/pricing" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Pricing</NavLink>
             <NavLink to="/safety" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Safety</NavLink>
@@ -39,7 +39,7 @@ export default function SiteLayout() {
               <p style={{ marginTop: 14, maxWidth: '22em' }}>Find and recover dividends you are owed on the Nigerian market. Investing is coming next.</p>
               <p style={{ marginTop: 14 }}>{SITE.address}<br /><a href={'tel:' + SITE.phoneTel}>{SITE.phone}</a><br /><a href={'mailto:' + SITE.email}>{SITE.email}</a><br /><span className="muted-on-dark">{SITE.hours}</span></p>
             </div>
-            <div><h4>Dividends</h4><ul><li><Link to="/check">Check my dividends</Link></li><li><Link to={{ pathname: '/', hash: '#how' }}>How it works</Link></li><li><Link to="/pricing">Pricing</Link></li><li><Link to="/invest">Investing, coming soon</Link></li></ul></div>
+            <div><h4>Dividends</h4><ul><li><a href="/check">Check my dividends</a></li><li><Link to={{ pathname: '/', hash: '#how' }}>How it works</Link></li><li><Link to="/pricing">Pricing</Link></li><li><Link to="/invest">Investing, coming soon</Link></li></ul></div>
             <div><h4>Trust</h4><ul><li><Link to="/safety">Safety</Link></li><li><Link to="/pricing">How we make money</Link></li><li><Link to={{ pathname: '/safety', hash: '#complaints' }}>Complaints</Link></li><li><Link to={{ pathname: '/safety', hash: '#fraud' }}>Report fraud</Link></li></ul></div>
             <div><h4>Learn</h4><ul><li><Link to="/learn">Guides</Link></li><li><Link to={{ pathname: '/learn', hash: '#bond' }}>Bond calculator</Link></li><li><Link to={{ pathname: '/', hash: '#faq' }}>Questions</Link></li></ul></div>
             <div><h4>Legal</h4><ul><li><Link to={{ pathname: '/legal', hash: '#terms' }}>Terms of use</Link></li><li><Link to={{ pathname: '/legal', hash: '#privacy' }}>Privacy notice</Link></li><li><Link to={{ pathname: '/legal', hash: '#risk' }}>Risk disclosure</Link></li><li><Link to={{ pathname: '/legal', hash: '#cookies' }}>Cookies</Link></li><li><Link to={{ pathname: '/legal', hash: '#complaints-policy' }}>Complaints policy</Link></li></ul></div>

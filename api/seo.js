@@ -3,7 +3,7 @@
 // Runs on Vercel's free tier. Reads articles from the article API; never touches the database directly.
 
 const API_BASE = (process.env.DVD_API_BASE || 'https://api.dividendii.com').replace(/\/$/, '')
-const SITE_URL = (process.env.DVD_SITE_URL || 'https://dividendii.com').replace(/\/$/, '')
+const SITE_URL = (process.env.DVD_SITE_URL || 'https://www.dividendii.com').replace(/\/$/, '')
 const SITE_NAME = process.env.DVD_SITE_NAME || 'Dividendii'
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')

@@ -43,7 +43,7 @@ export default function RequestForm({ kind = 'check', id = 'rf', submitLabel, on
       {err('consent')}
       {msg && !Object.keys(fields).length && <p className="alert bad" role="alert">{msg}</p>}
       <button className="btn btn-p btn-l" type="submit" disabled={busy}>{busy ? 'Sending…' : (submitLabel || (check ? 'Send my request' : 'Join the waitlist'))}</button>
-      <p className="fine">{check ? <>We check the registrars by hand and reply {SITE.reply}. No BVN needed. Checking for someone who passed away? <Link to="/check?mode=family">Use the family check</Link></> : 'We will only contact you about Dividendii.'}</p>
+      <p className="fine">{check ? <>We reply {SITE.reply}.</> : 'We will only contact you about Dividendii.'}</p>
     </form>
   )
 }

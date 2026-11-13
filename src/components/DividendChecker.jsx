@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import RequestForm from './RequestForm.jsx'
 
 function Guilloche() {
   const ref = useRef(null)
@@ -27,8 +26,14 @@ export default function DividendChecker() {
       <div className="cert-frame">
         <Guilloche />
         <div className="inner">
-          <div className="cert-head"><div className="k">Free dividend check</div><h2>Is there money in your name?</h2><p>Send your details once. We check the registrars for you and reply on WhatsApp.</p></div>
-          <RequestForm kind="check" id="chk" />
+          <div className="cert-head"><div className="k">Dividend check</div><h2>Is there money in your name?</h2><p>Tell us the companies you hold shares in. We complete each registrar's form, send it for you with your signed permission, and follow up.</p></div>
+          <ul className="fine" style={{ margin: '4px 0 16px', paddingLeft: 18, lineHeight: 1.7, textAlign: 'left', fontStyle: 'normal' }}>
+            <li>Free to send. About ten minutes.</li>
+            <li>You will need your BVN, bank account, a photo and your signature.</li>
+            <li>We give you a first update within 24 hours.</li>
+          </ul>
+          <a className="btn btn-g btn-l" href="/check/pilot" style={{ width: '100%', textAlign: 'center' }}>Start my check</a>
+          <p className="fine" style={{ marginTop: 10 }}>The registrar pays you directly. We never hold your money.</p>
         </div>
       </div>
     </div>
