@@ -61,11 +61,11 @@ export const BOND_WINDOW = {
 export const INDEX = { asi: 165412.08, asiChg: 0.6, banking: 1842.11, bankingChg: 1.1, mcap: '₦104.2tn' }
 
 export const USER = {
-  id: 'u-1', name: 'Damilola Ojo', firstName: 'Damilola', email: 'damilola@example.com', phone: '0803 000 0221',
+  id: 'u-1', name: 'Tolu Bakare', firstName: 'Tolu', email: 'tolu@example.com', phone: '0803 000 0221',
   bvnLast: '3321', ninLast: '8804', chn: '2210045', tier: 2, kyc: 'Verified', joined: '2026-09-02',
-  bank: { name: 'GTBank', last4: '4417', accountName: 'DAMILOLA OJO' },
-  beneficiary: { name: 'Adaeze Ojo', relationship: 'Spouse', phone: '0803 000 0000', confirmed: '2026-10-07' },
-  risk: 'Balanced', experience: 'Some', virtualAccount: { bank: 'Trust Bank', number: '9034 221 0045' },
+  bank: { name: 'GTBank', last4: '4417', accountName: 'TOLU BAKARE' },
+  beneficiary: { name: 'Kemi Bakare', relationship: 'Spouse', phone: '0803 000 0000', confirmed: '2026-10-07' },
+  risk: 'Balanced', experience: 'Some', virtualAccount: { bank: 'Demo only', number: '0000 000 000' },
   security: { biometric: true, timeout: true, screenshots: true, devices: ['MacBook Pro (this device)', 'Pixel 8'] },
 }
 
@@ -119,7 +119,7 @@ export const MANDATES = [
 ]
 
 export const LOANS = [
-  { id: 'VBL-2026-00118', owner: 'u-1', ownerName: 'Damilola Ojo', status: 'Active', amount: 900000, outstanding: 757311, rate: 0.24, tenor: 6, plan: 'Monthly', start: '2026-10-14', purpose: 'Personal',
+  { id: 'VBL-2026-00118', owner: 'u-1', ownerName: 'Tolu Bakare', status: 'Active', amount: 900000, outstanding: 757311, rate: 0.24, tenor: 6, plan: 'Monthly', start: '2026-10-14', purpose: 'Personal',
     collateral: [{ ticker: 'MTNN', units: 3500 }, { ticker: 'DANGCEM', units: 2200 }, { ticker: 'GTCO', units: 9000 }],
     payments: [{ n: 1, date: '2026-11-14', amount: 160689, status: 'Paid' }],
     alerts: [['2026-10-14T09:00:00', 'Lien placed at CSCS on 3 securities', 'email'], ['2026-10-14T10:30:00', 'Loan paid out ₦900,000 to GTBank ••4417', 'SMS, WhatsApp, email'], ['2026-11-14T08:05:00', 'Payment 1 of 6 received', 'SMS, email, app']] },
@@ -129,7 +129,7 @@ export const LOANS = [
 ]
 
 export const ADMIN_USERS = [
-  { id: 'u-1', name: 'Damilola Ojo', email: 'damilola@example.com', tier: 2, kyc: 'Verified', joined: '2026-09-02', chn: '2210045', holdings: 4862310 },
+  { id: 'u-1', name: 'Tolu Bakare', email: 'tolu@example.com', tier: 2, kyc: 'Verified', joined: '2026-09-02', chn: '2210045', holdings: 4862310 },
   { id: 'u-2', name: 'Fatima Abubakar', email: 'fatima@example.com', tier: 3, kyc: 'Verified', joined: '2026-08-14', chn: '1845023', holdings: 3200000 },
   { id: 'u-3', name: 'Chinedu Eze', email: 'chinedu@example.com', tier: 2, kyc: 'Verified', joined: '2026-08-30', chn: '2003311', holdings: 1900000 },
   { id: 'u-4', name: 'Bola Adeyemi', email: 'bola@example.com', tier: 3, kyc: 'Verified', joined: '2026-07-21', chn: '1788402', holdings: 7400000 },

@@ -18,7 +18,7 @@ export default function Support() {
   const [sp] = useSearchParams()
   const [tab, setTab] = useState(sp.get('tab') || 'help')
   const [form, setForm] = useState({ subject: '', detail: '' })
-  const [msgs, setMsgs] = useState([{ who: 'Dividendii', text: 'Hi Damilola, how can we help today?' }])
+  const [msgs, setMsgs] = useState([{ who: 'Dividendii', text: 'Hi there, how can we help today?' }])
   const [draft, setDraft] = useState('')
   const mine = state.complaints.filter(c => c.user === state.user.name)
   function send() {

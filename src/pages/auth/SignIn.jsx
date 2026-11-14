@@ -11,7 +11,7 @@ export default function SignIn() {
   const nav = useNavigate()
   const [sp] = useSearchParams()
   const staff = sp.get('staff') === '1'
-  const [email, setEmail] = useState(staff ? 'ops@vendii.ng' : 'damilola@example.com')
+  const [email, setEmail] = useState(staff ? 'ops@vendii.ng' : 'tolu@example.com')
   const [pw, setPw] = useState('')
   const [otp, setOtp] = useState('')
   const [step, setStep] = useState(1)

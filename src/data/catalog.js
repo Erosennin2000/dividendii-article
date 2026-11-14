@@ -101,8 +101,8 @@ export const OFFERS = [
     highlights: ['Oversubscribed by 37%', 'Allotment ratio 80%', 'Shares listed on the exchange'], useOfProceeds: [['Network rollout', 100]], risks: '', docs: ['Allotment announcement'] },
 ]
 export const OFFER_APPS = [
-  { id: 'APP-3301', offerId: 'off-5', owner: 'u-1', ownerName: 'Damilola Ojo', units: 2000, amount: 40000, status: 'Allotted', allottedUnits: 1600, refund: 8000, ts: rel(-60) },
-  { id: 'APP-3340', offerId: 'off-4', owner: 'u-1', ownerName: 'Damilola Ojo', units: 20, amount: 20000, status: 'Submitted', ts: rel(-2) },
+  { id: 'APP-3301', offerId: 'off-5', owner: 'u-1', ownerName: 'Tolu Bakare', units: 2000, amount: 40000, status: 'Allotted', allottedUnits: 1600, refund: 8000, ts: rel(-60) },
+  { id: 'APP-3340', offerId: 'off-4', owner: 'u-1', ownerName: 'Tolu Bakare', units: 20, amount: 20000, status: 'Submitted', ts: rel(-2) },
   { id: 'APP-3345', offerId: 'off-1', owner: 'u-2', ownerName: 'Fatima Abubakar', units: 2500, amount: 1200000, status: 'Submitted', ts: rel(-4) },
   { id: 'APP-3351', offerId: 'off-1', owner: 'u-4', ownerName: 'Bola Adeyemi', units: 10000, amount: 4800000, status: 'Submitted', ts: rel(-3) },
   { id: 'APP-3356', offerId: 'off-2', owner: 'u-3', ownerName: 'Chinedu Eze', units: 4000, amount: 50000, status: 'Submitted', ts: rel(-1) },
@@ -155,8 +155,8 @@ export const SERVICE_TYPES = [
 ]
 export const SR_STATUSES = ['Submitted', 'In review', 'Needs info', 'Completed', 'Rejected']
 export const SERVICE_REQUESTS = [
-  { id: 'SR-1031', owner: 'u-1', ownerName: 'Damilola Ojo', type: 'statement', subject: 'Statement of account', detail: 'From 2026-01-01 to 2026-09-30. Purpose: Visa application.', opened: rel(-12), due: relDate(-11), status: 'Completed', assignee: 'Support', notes: [] },
-  { id: 'SR-1046', owner: 'u-1', ownerName: 'Damilola Ojo', type: 'bank', subject: 'Change withdrawal bank account', detail: 'New account: Access Bank 0123456789', opened: rel(-1), due: relDate(1), status: 'In review', assignee: 'Support', notes: [{ by: 'Support', ts: rel(-1), text: 'Name check against BVN passed. Waiting for cooling-off period.' }] },
+  { id: 'SR-1031', owner: 'u-1', ownerName: 'Tolu Bakare', type: 'statement', subject: 'Statement of account', detail: 'From 2026-01-01 to 2026-09-30. Purpose: Visa application.', opened: rel(-12), due: relDate(-11), status: 'Completed', assignee: 'Support', notes: [] },
+  { id: 'SR-1046', owner: 'u-1', ownerName: 'Tolu Bakare', type: 'bank', subject: 'Change withdrawal bank account', detail: 'New account: Access Bank 0123456789', opened: rel(-1), due: relDate(1), status: 'In review', assignee: 'Support', notes: [{ by: 'Support', ts: rel(-1), text: 'Name check against BVN passed. Waiting for cooling-off period.' }] },
   { id: 'SR-1049', owner: 'u-2', ownerName: 'Fatima Abubakar', type: 'transfer', subject: 'Move shares in from another broker', detail: 'Broker: [Other broker]. CHN 1845023. 40,000 FIRSTHOLDCO.', opened: rel(-3), due: relDate(2), status: 'In review', assignee: 'Claims', notes: [] },
   { id: 'SR-1050', owner: 'u-6', ownerName: 'Grace Nwosu', type: 'contact', subject: 'Update phone or email', detail: 'New phone number 0803 555 0101.', opened: rel(-1), due: relDate(1), status: 'Submitted', assignee: null, notes: [] },
   { id: 'SR-1052', owner: 'u-5', ownerName: 'Estate of Samuel Okoro', type: 'estate', subject: 'Report a death or claim an estate', detail: 'Name of deceased: Samuel Okoro. Relationship: Son.', opened: rel(-5), due: relDate(-3), status: 'Needs info', assignee: 'Claims', notes: [{ by: 'Claims', ts: rel(-4), text: 'Asked for letters of administration.' }] },
@@ -169,16 +169,16 @@ export const TRANSACTIONS = [
   tx('TX-90412', -0.1, 'u-4', 'Bola Adeyemi', 'Withdrawal', 'out', 3500000, 'Pending approval', 'Access Bank ••2031', { needsApproval: true }),
   tx('TX-90411', -0.2, 'u-2', 'Fatima Abubakar', 'Deposit', 'in', 800000, 'Completed', 'NIP from GTBank'),
   tx('TX-90410', -0.4, 'u-6', 'Grace Nwosu', 'Withdrawal', 'out', 95000, 'Completed', 'Zenith ••7712'),
-  tx('TX-90409', -0.5, 'u-1', 'Damilola Ojo', 'Trade settlement', 'out', 73215, 'Completed', 'VND-26-004790 GTCO buy'),
+  tx('TX-90409', -0.5, 'u-1', 'Tolu Bakare', 'Trade settlement', 'out', 73215, 'Completed', 'VND-26-004790 GTCO buy'),
   tx('TX-90408', -1, 'u-3', 'Chinedu Eze', 'Deposit', 'in', 250000, 'Pending', 'Unmatched transfer, name mismatch', { unmatched: true }),
-  tx('TX-90407', -1, 'u-1', 'Damilola Ojo', 'Claim payout', 'in', 37080, 'Completed', 'CLM-0412 net of 10% fee'),
+  tx('TX-90407', -1, 'u-1', 'Tolu Bakare', 'Claim payout', 'in', 37080, 'Completed', 'CLM-0412 net of 10% fee'),
   tx('TX-90406', -2, 'u-2', 'Fatima Abubakar', 'Loan repayment', 'in', 196000, 'Completed', 'VBL-2026-00241 instalment'),
   tx('TX-90405', -2, 'u-4', 'Bola Adeyemi', 'Fund subscription', 'out', 1000000, 'Completed', 'Naira Money Market Fund'),
   tx('TX-90404', -3, 'u-3', 'Chinedu Eze', 'Loan disbursement', 'out', 600000, 'Completed', 'VBL-2026-00097'),
   tx('TX-90403', -3, 'u-10', 'Yemi Alade', 'Deposit', 'in', 55000, 'Completed', 'NIP from Kuda'),
   tx('TX-90402', -4, 'u-6', 'Grace Nwosu', 'Withdrawal', 'out', 60000, 'Failed', 'Bank returned: account closed', { failed: true }),
   tx('TX-90401', -5, 'u-2', 'Fatima Abubakar', 'Offer payment', 'out', 1200000, 'Completed', 'Orikun Refining IPO'),
-  tx('TX-90400', -6, 'u-1', 'Damilola Ojo', 'Deposit', 'in', 300000, 'Completed', 'NIP from GTBank'),
+  tx('TX-90400', -6, 'u-1', 'Tolu Bakare', 'Deposit', 'in', 300000, 'Completed', 'NIP from GTBank'),
 ]
 
 // ---------- staff and permissions ----------

@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom'
 import { Shell } from './Shell.jsx'
 import { useStore, activeLoan, loanMetrics } from '../store/store.jsx'
 import { LENDING_ENABLED } from '../features.js'
+import { DemoBanner } from '../components/AccountGate.jsx'
 
-export default function AppShell() {
+export default function AppShell({ account = false }) {
   const { state } = useStore()
   const unread = state.notifications.filter(n => !n.read).length
   const claimsNeedingAction = state.claims.filter(c => c.owner === 'u-1' && c.status === 'Action needed').length
@@ -30,8 +31,10 @@ export default function AppShell() {
         { to: '/app/services', label: 'Services' },
         { to: '/app/support', label: 'Help and complaints' },
       ] }]}
-      box={{ title: 'Your shares, your name', body: <>Held at CSCS under CHN {state.user.chn}. Sponsoring broker: Trust Bank Securities.<div style={{ marginTop: 8 }}><span className="dot" style={{ marginRight: 6 }} />All systems normal</div></> }}
-      footLinks={[{ to: '/', label: 'Dividendii website' }, { to: '/admin', label: 'Staff console' }]}
+      box={{ title: 'Your shares, your name', body: <>Held at CSCS under CHN {state.user.chn}. Sponsoring broker: Trust Bank Securities.{account ? ' (Sample investor.)' : ''}<div style={{ marginTop: 8 }}><span className="dot" style={{ marginRight: 6 }} />All systems normal</div></> }}
+      footLinks={account ? [{ to: '/', label: 'Dividendii website' }, { href: '/check/account', label: 'My account' }] : [{ to: '/', label: 'Dividendii website' }, { to: '/admin', label: 'Staff console' }]}
+      signOutHref={account ? '/check/account?signout=1' : null}
+      banner={account ? <DemoBanner /> : null}
     />
   )
 }

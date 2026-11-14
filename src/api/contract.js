@@ -27,11 +27,11 @@ const op = (name, method, path, area, summary, extra = {}) => { OPS[name] = { na
 
 // ------------------------------------------------------------------ session
 op('auth.signup', 'POST', '/auth/signup', 'public', 'Create a customer account (step 1 of onboarding). BVN and NIN checks run behind it.', {
-  public: true, request: { name: 'Damilola Ojo', email: 'damilola@example.com', phone: '08030000221', password: '••••••••', bvn: '22212345678', nin: '12345678901' }, response: { challengeId: 'ch_9d1', channel: 'sms' } })
+  public: true, request: { name: 'Tolu Bakare', email: 'tolu@example.com', phone: '08030000221', password: '••••••••', bvn: '22212345678', nin: '12345678901' }, response: { challengeId: 'ch_9d1', channel: 'sms' } })
 op('auth.login', 'POST', '/auth/login', 'public', 'Check email/phone and password, send a one-time code. Staff pass staff:true.', {
-  public: true, request: { identifier: 'damilola@example.com', password: '••••••••', staff: false }, response: { challengeId: 'ch_9d1', channel: 'sms', maskedTo: '0803 ••• 0221' } })
+  public: true, request: { identifier: 'tolu@example.com', password: '••••••••', staff: false }, response: { challengeId: 'ch_9d1', channel: 'sms', maskedTo: '0803 ••• 0221' } })
 op('auth.verify', 'POST', '/auth/verify', 'public', 'Exchange the one-time code for tokens. Staff responses include role.', {
-  public: true, request: { challengeId: 'ch_9d1', code: '123456' }, response: { accessToken: 'eyJ…', refreshToken: 'rt_…', expiresIn: 900, admin: false, role: null, user: { id: 'u-1', name: 'Damilola Ojo', email: 'damilola@example.com' } } })
+  public: true, request: { challengeId: 'ch_9d1', code: '123456' }, response: { accessToken: 'eyJ…', refreshToken: 'rt_…', expiresIn: 900, admin: false, role: null, user: { id: 'u-1', name: 'Tolu Bakare', email: 'tolu@example.com' } } })
 op('auth.refresh', 'POST', '/auth/refresh', 'public', 'Swap a refresh token for a new access token.', { public: true, request: { refreshToken: 'rt_…' }, response: { accessToken: 'eyJ…', expiresIn: 900 } })
 op('auth.logout', 'POST', '/auth/logout', 'customer', 'Revoke the refresh token.', { request: {}, response: { ok: true } })
 op('session.bootstrap', 'GET', '/me/bootstrap', 'customer', 'Everything the customer apps need on load, in one call. Each key is a slice of app state; shapes are in the sections below.', {
@@ -137,7 +137,7 @@ op('staff.upsert', 'PUT', '/admin/staff/:id', 'admin', 'Invite a staff member or
 op('staff.status', 'POST', '/admin/staff/:id/status', 'admin', 'Activate or deactivate a staff account (also revokes their sessions).', { action: 'STAFF_STATUS', permission: 'staff', body: (a) => ({ status: a.status }), request: { status: 'Deactivated' }, response: { data: { status: 'Deactivated' } } })
 op('integrations.update', 'PUT', '/admin/integrations/:id', 'admin', 'Save an integration\'s mode and endpoint. Secrets are stored server-side only; the browser never sees them.', { action: 'INTEGRATION', permission: 'integrations', body: (a) => a.patch, request: { mode: 'live', baseUrl: 'https://broker.example.com' }, response: { data: 'Integration' } })
 op('integrations.ping', 'POST', '/admin/integrations/:id/ping', 'admin', 'Server-side health check of one integration.', { permission: 'integrations', request: {}, response: { data: { ok: true, latencyMs: 142, checked: '2026-10-11T10:00:00Z' } } })
-op('reports.run', 'GET', '/admin/reports/:key', 'admin', 'Run a report (orders, customers, claims, loans, ledger, revenue). Returns rows for the on-screen table; CSV is built in the browser.', { permission: 'reports', query: ['from', 'to'], response: { columns: ['Date', 'Order', 'Customer'], rows: [['2026-10-11', 'VND-26-004830', 'Damilola Ojo']] } })
+op('reports.run', 'GET', '/admin/reports/:key', 'admin', 'Run a report (orders, customers, claims, loans, ledger, revenue). Returns rows for the on-screen table; CSV is built in the browser.', { permission: 'reports', query: ['from', 'to'], response: { columns: ['Date', 'Order', 'Customer'], rows: [['2026-10-11', 'VND-26-004830', 'Tolu Bakare']] } })
 op('audit.list', 'GET', '/admin/audit', 'admin', 'Audit log, newest first. Page with cursor.', { permission: 'audit', query: ['cursor', 'actor'], response: [{ ts: '2026-10-11T10:43:00Z', actor: 'Order desk (A. Bello)', action: 'Sent order to broker', detail: 'VND-26-004812' }] })
 
 // ------------------------------------------------------------------ helpers used by the store

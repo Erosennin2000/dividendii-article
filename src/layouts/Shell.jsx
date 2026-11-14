@@ -3,7 +3,7 @@ import { NavLink, Link, Outlet, useNavigate, useOutletContext } from 'react-rout
 import { useStore } from '../store/store.jsx'
 import { Logo, Avatar, Toasts, Pill } from '../components/ui.jsx'
 
-export function Shell({ kind, sections, box, footLinks, title }) {
+export function Shell({ kind, sections, box, footLinks, title, signOutHref, banner }) {
   const { state, dispatch } = useStore()
   const [open, setOpen] = useState(false)
   const nav = useNavigate()
@@ -26,11 +26,14 @@ export function Shell({ kind, sections, box, footLinks, title }) {
         <div className="spacer" />
         {box && <div className="box"><b>{box.title}</b>{box.body}</div>}
         <div className="foot" style={{ marginTop: 8 }}>
-          {footLinks.map(l => <Link key={l.to} to={l.to}>{l.label}</Link>)}
-          <a href="#signout" onClick={e => { e.preventDefault(); dispatch({ type: 'SIGN_OUT' }); nav('/') }}>Sign out</a>
+          {footLinks.map(l => l.href ? <a key={l.href} href={l.href}>{l.label}</a> : <Link key={l.to} to={l.to}>{l.label}</Link>)}
+          {signOutHref
+            ? <a href={signOutHref} onClick={() => dispatch({ type: 'SIGN_OUT' })}>Sign out</a>
+            : <a href="#signout" onClick={e => { e.preventDefault(); dispatch({ type: 'SIGN_OUT' }); nav('/') }}>Sign out</a>}
         </div>
       </nav>
       <div className="main">
+        {banner}
         <Outlet context={{ openMenu: () => setOpen(true) }} />
         <Toasts />
       </div>

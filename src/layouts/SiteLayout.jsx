@@ -25,6 +25,7 @@ export default function SiteLayout() {
             <NavLink to="/pricing" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Pricing</NavLink>
             <NavLink to="/safety" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Safety</NavLink>
             <NavLink to="/learn" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Learn</NavLink>
+            <a href="/check/account">My account</a>
           </nav>
           <div className="headcta"><a className="btn btn-g" href={waLink} target="_blank" rel="noopener noreferrer">Chat with us</a></div>
           <button className="menubtn" type="button" aria-expanded={open} aria-label="Menu" onClick={() => setOpen(o => !o)}>{open ? 'Close' : 'Menu'}</button>

@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { StoreProvider, useStore } from './store/store.jsx'
 import SiteLayout from './layouts/SiteLayout.jsx'
-import AppShell from './layouts/AppShell.jsx'
 import AdminShell from './layouts/AdminShell.jsx'
 import Home from './pages/site/Home.jsx'
 import Check from './pages/site/Check.jsx'
@@ -13,25 +12,6 @@ import Learn from './pages/site/Learn.jsx'
 import Article from './pages/site/Article.jsx'
 import SignIn from './pages/auth/SignIn.jsx'
 import SignUp from './pages/auth/SignUp.jsx'
-import Dashboard from './pages/app/Dashboard.jsx'
-import Markets from './pages/app/Markets.jsx'
-import Stock from './pages/app/Stock.jsx'
-import Equities from './pages/app/Equities.jsx'
-import Trade from './pages/app/Trade.jsx'
-import Funds from './pages/app/Funds.jsx'
-import FundDetail from './pages/app/FundDetail.jsx'
-import Offers from './pages/app/Offers.jsx'
-import OfferDetail from './pages/app/OfferDetail.jsx'
-import Insurance from './pages/app/Insurance.jsx'
-import Trusts from './pages/app/Trusts.jsx'
-import Services from './pages/app/Services.jsx'
-import Orders from './pages/app/Orders.jsx'
-import FixedIncome from './pages/app/FixedIncome.jsx'
-import Dividends from './pages/app/Dividends.jsx'
-import Funding from './pages/app/Funding.jsx'
-import Settings from './pages/app/Settings.jsx'
-import Support from './pages/app/Support.jsx'
-import Notifications from './pages/app/Notifications.jsx'
 import Overview from './pages/admin/Overview.jsx'
 import OrderDesk from './pages/admin/OrderDesk.jsx'
 import Users from './pages/admin/Users.jsx'
@@ -48,7 +28,8 @@ import Integrations from './pages/admin/Integrations.jsx'
 import Customer from './pages/admin/Customer.jsx'
 import Audit from './pages/admin/Audit.jsx'
 import { can } from './data/catalog.js'
-import { LENDING_ENABLED, DEMO_ENABLED } from './features.js'
+import { LENDING_ENABLED, DEMO_ENABLED, ACCOUNT_DEMO } from './features.js'
+import AccountGate from './components/AccountGate.jsx'
 import Legal from './pages/site/Legal.jsx'
 import { publicApi } from './api/articles.js'
 
@@ -63,6 +44,27 @@ const Review = lazyIf(() => import('./pages/lend/Review.jsx'))
 const Documents = lazyIf(() => import('./pages/lend/Documents.jsx'))
 const LendLearn = lazyIf(() => import('./pages/lend/Learn.jsx'))
 const ArticlesAdmin = React.lazy(() => import('./pages/admin/articles/ArticlesAdmin.jsx'))
+// The investing demo loads only when someone opens it.
+const AppShell = React.lazy(() => import('./layouts/AppShell.jsx'))
+const Dashboard = React.lazy(() => import('./pages/app/Dashboard.jsx'))
+const Markets = React.lazy(() => import('./pages/app/Markets.jsx'))
+const Stock = React.lazy(() => import('./pages/app/Stock.jsx'))
+const Equities = React.lazy(() => import('./pages/app/Equities.jsx'))
+const Trade = React.lazy(() => import('./pages/app/Trade.jsx'))
+const Funds = React.lazy(() => import('./pages/app/Funds.jsx'))
+const FundDetail = React.lazy(() => import('./pages/app/FundDetail.jsx'))
+const Offers = React.lazy(() => import('./pages/app/Offers.jsx'))
+const OfferDetail = React.lazy(() => import('./pages/app/OfferDetail.jsx'))
+const Insurance = React.lazy(() => import('./pages/app/Insurance.jsx'))
+const Trusts = React.lazy(() => import('./pages/app/Trusts.jsx'))
+const Services = React.lazy(() => import('./pages/app/Services.jsx'))
+const Orders = React.lazy(() => import('./pages/app/Orders.jsx'))
+const FixedIncome = React.lazy(() => import('./pages/app/FixedIncome.jsx'))
+const Dividends = React.lazy(() => import('./pages/app/Dividends.jsx'))
+const Funding = React.lazy(() => import('./pages/app/Funding.jsx'))
+const Settings = React.lazy(() => import('./pages/app/Settings.jsx'))
+const Support = React.lazy(() => import('./pages/app/Support.jsx'))
+const Notifications = React.lazy(() => import('./pages/app/Notifications.jsx'))
 const Lending = lazyIf(() => import('./pages/admin/Lending.jsx'))
 
 function RequireAuth({ children, admin }) {
@@ -110,10 +112,9 @@ export function AppRoutes() {
           </Route>
           {!DEMO_ENABLED && <Route path="/signin" element={<Navigate to="/" replace />} />}
           {!DEMO_ENABLED && <Route path="/signup" element={<Navigate to="/check" replace />} />}
-          {!DEMO_ENABLED && <Route path="/app/*" element={<Navigate to="/" replace />} />}
           {DEMO_ENABLED && <Route path="/signin" element={<SignIn />} />}
           {DEMO_ENABLED && <Route path="/signup" element={<SignUp />} />}
-          {DEMO_ENABLED && <Route path="/app" element={<RequireAuth><AppShell /></RequireAuth>}>
+          <Route path="/app" element={DEMO_ENABLED ? <RequireAuth><AppShell /></RequireAuth> : ACCOUNT_DEMO ? <AccountGate><AppShell account /></AccountGate> : <Navigate to="/" replace />}>
             <Route index element={<Dashboard />} />
             <Route path="markets" element={<Markets />} />
             <Route path="stock/:ticker" element={<Stock />} />
@@ -133,8 +134,8 @@ export function AppRoutes() {
             <Route path="settings" element={<Settings />} />
             <Route path="support" element={<Support />} />
             <Route path="notifications" element={<Notifications />} />
-          </Route>}
-          {!LENDING_ENABLED && <Route path="/lend/*" element={<Navigate to="/app" replace />} />}
+          </Route>
+          {!LENDING_ENABLED && <Route path="/lend/*" element={<Navigate to={DEMO_ENABLED || ACCOUNT_DEMO ? '/app' : '/'} replace />} />}
           {LENDING_ENABLED && <Route path="/lend" element={<RequireAuth><LendShell /></RequireAuth>}>
             <Route index element={<LendDashboard />} />
             <Route path="start" element={<Start />} />
