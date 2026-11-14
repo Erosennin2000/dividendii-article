@@ -12,7 +12,7 @@ export default function SiteLayout() {
     <div className="site">
       <div className="notice" role="region" aria-label="Important notice">
         <div className="wrap">
-          <span>Dividendii staff will never ask for your PIN, OTP or card details, and never ask you to pay into an account that isn't in your own name.</span>
+          <span>Dividendii staff will never ask for your PIN, OTP or card details. Our fees are paid only on Paystack's secure page, never to a personal account.</span>
           <span><a href={waLink} target="_blank" rel="noopener noreferrer">WhatsApp us</a></span>
         </div>
       </div>

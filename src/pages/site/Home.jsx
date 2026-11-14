@@ -50,10 +50,10 @@ export default function Home() {
         <div className="wrap">
           <div className="sechead"><h2>How recovery works</h2><p>Most claims close in 4 to 6 weeks, depending on the registrar. We keep you updated on WhatsApp at every step.</p></div>
           <ol className="how">
-            <li><h3>Check for free</h3><p>Tell us the companies you hold shares in. We send your forms to the registrars and give you a first update within 24 hours.</p></li>
+            <li><h3>Tell us your companies</h3><p>Pick the companies you hold shares in. It takes about ten minutes.</p></li>
             <li><h3>Prove it's you</h3><p>You give your BVN, bank account, photo and signature once. For an estate, we need the letters of administration or probate.</p></li>
-            <li><h3>Pay only if there is money</h3><p>Once a registrar confirms money in your name, you pay ₦{SITE.upfront} per company, plus VAT, to start the claim.</p></li>
-            <li><h3>Get paid</h3><p>The registrar pays straight into your bank account. We then take our {fee}% success fee on the money recovered.</p></li>
+            <li><h3>Pay the start fee</h3><p>₦{SITE.upfront} per company, plus VAT, on Paystack's secure page. We then send your forms to the registrars and give you a first update within 24 hours.</p></li>
+            <li><h3>Get paid</h3><p>The registrar pays straight into your bank account. You then pay our {fee}% success fee on the money recovered.</p></li>
           </ol>
         </div>
       </section>
@@ -63,8 +63,7 @@ export default function Home() {
           <div className="sechead"><h2>What it costs, in naira</h2><p>No subscriptions and no hidden charges. Here is how Dividendii makes money, and what the government and the exchange charge on top once investing opens.</p></div>
           <div className="pricing">
             <div className="tablebox"><table className="ptable"><thead><tr><th scope="col">Service</th><th scope="col">What you pay</th><th scope="col">Example</th></tr></thead><tbody>
-              <tr><td>Dividend check</td><td>Free</td><td className="muted">Search as many names as you like</td></tr>
-              <tr><td>Dividend recovery</td><td>₦{SITE.upfront} per company owing you, plus 7.5% VAT (₦{upfrontWithVat()}), then {fee}% of what's recovered, taken only once it's paid to your bank</td><td className="muted">Recover ₦100,000 from one company: you keep ₦{(100000 * (1 - SITE.success / 100) - upfrontWithVat()).toLocaleString('en-NG')}</td></tr>
+              <tr><td>Dividend check and recovery</td><td>₦{SITE.upfront} per company, plus 7.5% VAT (₦{upfrontWithVat()}), paid with Paystack when you send your forms. Then {fee}% of what's recovered, paid by you only once it's in your bank</td><td className="muted">Recover ₦100,000 from one company: you keep ₦{(100000 * (1 - SITE.success / 100) - upfrontWithVat()).toLocaleString('en-NG')}</td></tr>
               <tr><td>Buying and selling shares (when investing opens)</td><td>{(state.settings.commission * 100).toFixed(2)}% commission plus statutory charges (SEC, NGX, CSCS, stamp duty, VAT)</td><td className="muted">Use the calculator to see every line</td></tr>
               <tr><td>FGN Savings Bond</td><td>No fee from Dividendii</td><td className="muted">₦100,000 gets the full government rate</td></tr>
               <tr><td>Deposits and withdrawals (when investing opens)</td><td>Free by bank transfer</td><td className="muted">Withdrawals only to your own account</td></tr>
@@ -109,7 +108,7 @@ export default function Home() {
         <div className="wrap">
           <div className="sechead"><h2>Questions people ask first</h2></div>
           <div className="faq">
-            {[['Is the dividend check really free?', `Yes. Sending your forms costs nothing. We ask for ₦${SITE.upfront} per company, plus VAT, only after a registrar confirms there is money for you, and then ${fee}% of what is actually paid into your bank account.`], ['Why do you need my BVN?', 'Registrars match claims against BVN records. We put it on your forms so the shares can be matched to you and the money is paid to an account in your name. It goes only to the registrars you choose.'], ['My dividends are over six years old. Are they gone?', 'No. Dividends unclaimed for six years or more move to the Federal Government\'s Unclaimed Funds Trust Fund, where the government holds them as custodian. They can still be claimed, and we handle that claim too.'], ['Can I claim for my late father or mother?', 'Yes, if you are an administrator or executor of the estate. You\'ll need the death certificate and letters of administration or probate. We tell you exactly what\'s missing before anything is submitted.'], ['Who will hold my shares when investing opens?', 'The Central Securities Clearing System, in your own name, under your CHN. Trades will go through a licensed broker. Dividendii never owns your shares.']].map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}
+            {[['What does the dividend check cost?', `₦${SITE.upfront} per company, plus VAT, paid on Paystack's secure page when you send your forms. Then ${fee}% of what is actually paid into your bank account, which you pay only after the money arrives. The start fee covers our work and is not a promise that money will be found.`], ['Why do you need my BVN?', 'Registrars match claims against BVN records. We put it on your forms so the shares can be matched to you and the money is paid to an account in your name. It goes only to the registrars you choose.'], ['My dividends are over six years old. Are they gone?', 'No. Dividends unclaimed for six years or more move to the Federal Government\'s Unclaimed Funds Trust Fund, where the government holds them as custodian. They can still be claimed, and we handle that claim too.'], ['Can I claim for my late father or mother?', 'Yes, if you are an administrator or executor of the estate. You\'ll need the death certificate and letters of administration or probate. We tell you exactly what\'s missing before anything is submitted.'], ['Who will hold my shares when investing opens?', 'The Central Securities Clearing System, in your own name, under your CHN. Trades will go through a licensed broker. Dividendii never owns your shares.']].map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}
           </div>
         </div>
       </section>

@@ -28,7 +28,7 @@ export default function DividendChecker() {
         <div className="inner">
           <div className="cert-head"><div className="k">Dividend check</div><h2>Is there money in your name?</h2><p>Tell us the companies you hold shares in. We complete each registrar's form, send it for you with your signed permission, and follow up.</p></div>
           <ul className="fine" style={{ margin: '4px 0 16px', paddingLeft: 18, lineHeight: 1.7, textAlign: 'left', fontStyle: 'normal' }}>
-            <li>Free to send. About ten minutes.</li>
+            <li>About ten minutes. ₦150 per company plus VAT to send.</li>
             <li>You will need your BVN, bank account, a photo and your signature.</li>
             <li>We give you a first update within 24 hours.</li>
           </ul>
