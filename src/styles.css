@@ -559,3 +559,5 @@ select.inp{appearance:auto;padding-right:10px}
 .demo-banner{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:#FBF0DD;color:#5A3A00;border-bottom:1px solid #E8D8B8;padding:10px 20px;font-size:13.5px;line-height:1.5}
 .demo-banner .demo-links{display:flex;gap:14px;flex-wrap:wrap}
 .demo-banner a{color:#17375A;font-weight:700;white-space:nowrap}
+.lib-chip:disabled{opacity:.4;cursor:not-allowed}
+.lib-chip:disabled:hover{border-color:var(--line)}
